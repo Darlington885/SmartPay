@@ -108,7 +108,7 @@ abstract class _LoginStore with Store {
       var res = await api.login(context, LoginDto(
         email: email.toLowerCase(),
         password: password,
-        deviceName: deviceName,
+        device_name: deviceName,
       ));
 
       if (res.status == true ) {

@@ -1,16 +1,16 @@
 class LoginDto {
     String email;
     String password;
-    String deviceName;
+    String device_name;
 
 
-    LoginDto({this.email, this.password,this.deviceName});
+    LoginDto({this.email, this.password,this.device_name});
 
     factory LoginDto.fromJson(Map<String, dynamic> json) {
         return LoginDto(
             email: json['email'],
             password: json['password'],
-            deviceName: json['deviceName'],
+            device_name: json['device_name'],
         );
     }
 
@@ -18,7 +18,7 @@ class LoginDto {
         final Map<String, dynamic> data = new Map<String, dynamic>();
         data['email'] = this.email;
         data['password'] = this.password;
-        data['deviceName'] = this.deviceName;
+        data['device_name'] = this.device_name;
         return data;
     }
 }
