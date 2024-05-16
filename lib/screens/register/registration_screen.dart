@@ -3,7 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+//import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:provider/provider.dart';
 
 import '../../classes/colors.dart';
@@ -43,7 +43,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
   String phoneNumber;
   String initialCountry = 'NG';
-  PhoneNumber number = PhoneNumber(isoCode: 'NG');
+  //PhoneNumber number = PhoneNumber(isoCode: 'NG');
 
   @override
   void initState() {

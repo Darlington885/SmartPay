@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartpay/screens/auth/login.dart';
 import 'package:smartpay/screens/register/registration_screen.dart';
+import 'package:smartpay/screens/register/verify_otp.dart';
 import 'package:smartpay/widgets/button.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -82,7 +83,7 @@ class _OnboardState extends State<Onboard> {
                       child: Image.asset('assets/images/onboarding/fade.jpeg',fit: BoxFit.fitWidth,width: double.infinity,),
                     ),
                     Padding(
-                        padding: EdgeInsets.only(top: 500.h,left: 80.w),
+                        padding: EdgeInsets.only(top: 500.h,left: 50.w),
                         child:Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
@@ -107,7 +108,7 @@ class _OnboardState extends State<Onboard> {
                    child: Image.asset('assets/images/onboarding/fade.jpeg',fit: BoxFit.fitWidth,width: double.infinity,),
                  ),
                  Padding(
-                   padding: EdgeInsets.only(top: 500.h,left: 80.w),
+                   padding: EdgeInsets.only(top: 500.h,left: 50.w),
                    child:Column(
                      crossAxisAlignment: CrossAxisAlignment.center,
                      children: [
@@ -141,6 +142,7 @@ class _OnboardState extends State<Onboard> {
                   text: 'Get Started',
                   onPressed: () {
                     FocusScope.of(context).unfocus();
+                    //Navigator.pushNamed(context, VerifyOtp.routeName);
                     Navigator.pushNamed(context, LoginScreen.routeName);
                     //Navigator.pushNamed(context, RegistrationScreen.routeName);
                   },

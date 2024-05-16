@@ -36,10 +36,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   shared_preferences: ^2.0.15
   local_auth: ^2.1.1
-  intl_phone_number_input: ^0.7.0+2
+  #intl_phone_number_input: ^0.7.0+2
   validators: ^3.0.0
   provider: ^6.0.3
-  timer_button: ^2.0.0
+  #timer_button: ^2.0.0
   share_plus: ^4.0.10+1
   share_files_and_screenshot_widgets: ^1.0.6
   file_picker: ^5.2.4
@@ -48,6 +48,7 @@ dependencies:
   webview_flutter: ^4.0.7
   flutter_dotenv: ^5.0.2
   flutter_screenutil:
+  #pin_code_text_field: ^1.8.0
   pin_code_fields: ^7.2.0
   move_to_background: ^1.0.2
   smooth_page_indicator: ^1.1.0

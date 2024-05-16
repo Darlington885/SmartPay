@@ -109,7 +109,7 @@ class MainClass {
 
   static line(){
     return Container(
-      margin: EdgeInsets.only(left: 10.w, right: 10.w),
+      margin: EdgeInsets.only(left: 8.w, right: 8.w),
       decoration: const BoxDecoration(
         color: AppColor.colorAppGray4,
       ),
@@ -119,18 +119,20 @@ class MainClass {
   }
 
   static socialIcon(ic, onPressed){
-    return InkWell(
-      onTap: onPressed,
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: AppColor.colorAppGray4),
-        ),
-        height: 56,
-        width: 150,
-        child: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Image.asset(ic, height: 24.h, width: 24.w,),
+    return Expanded(
+      child: InkWell(
+        onTap: onPressed,
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: AppColor.colorAppGray4),
+          ),
+          height: 56,
+          width: 150,
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Image.asset(ic, height: 24.h, width: 24.w,),
+          ),
         ),
       ),
     );
