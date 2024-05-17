@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:mobx/mobx.dart';
+import 'package:smartpay/models/dashboard_response.dart';
 import 'package:smartpay/utils/navigators.dart';
 import 'package:validators/validators.dart';
 
@@ -113,10 +114,6 @@ abstract class _LoginStore with Store {
 
       if (res.status == true ) {
        ResponseData.loginResponse = res;
-       authStore.loginToken = res.data.token;
-       AuthStorage().saveStringData("loginToken",res.data.token);
-       var userSecret = await api.getSecret(context);
-       ResponseData.dashboardResponse = userSecret;
 
         print(res);
         //Saving the login credentials locally
@@ -148,6 +145,8 @@ abstract class _LoginStore with Store {
       load(false);
     }
   }
+
+
 
 }
 

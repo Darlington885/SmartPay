@@ -1,6 +1,4 @@
 
-import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:mobx/mobx.dart';
 import 'package:validators/validators.dart';
@@ -137,102 +135,6 @@ abstract class _ForgotPasswordStore with Store {
     validateConfirmPassword(confirmPassword);
     return error.hasErrors;
   }
-
-/*  Future<void> submit(ApiClient api, BuildContext context, Function(String) s,
-      Function(String) e) async {
-
-    try {
-      load(true);
-      // var data = {
-      //   "email":email,
-      //   "password":password,
-      //   "password_confirmation":confirmPassword,
-      //   "otp":otp
-      // };
-
-      var res = await api.resetPassword(context, email);
-      if(res.success == true){
-        Navigator.pushNamed(context, EnterOtpForgotPasswordScreen.routeName);
-      }
-
-      else{
-        e(res.message ?? res.message);
-        load(false);
-      }
-      s(res.message);
-
-    }on ApiClientResponse catch (err) {
-      load(false);
-      e(err.message ?? "An Error Occurred");
-
-    }on DioError catch (err) {
-      load(false);
-      e(err.message ?? "An Error Occurred");
-
-    }
-    finally {
-      load(false);
-    }
-
-  }*/
-
-/*  Future<void> submitTwo(ApiClient api, BuildContext context,
-      Function(String) s, Function(String) e,) async {
-
-    try {
-      load(true);
-
-      var d = {
-        "email": email,
-        "otp": otp,
-      };
-
-      var res = await api.verifyAccount(context, d, email, otp);
-
-      if (res.success == true) {
-      ResponseData.verifyOtpResponse = res;
-        Navigator.pushNamed(context, EnterNewPassword.routeName);
-      } else {
-        e(res.message ?? res.message);
-        load(false);
-      }
-    } on ApiClientResponse catch (res) {
-      e(res.message ?? res.message);
-      load(false);
-    } on DioError catch (res) {
-      e(res.message ?? res.message);
-      load(false);
-    } finally {
-      load(false);
-    }
-  }
-
-  Future<void> submitThree(ApiClient api, BuildContext context, Function(String) s, Function(String) e,) async {
-    try {
-      load(true);
-      var d = {
-        "password":password,
-        "confirm_password":confirmPassword
-      };
-      var res = await api.changePasswordTwo(context, d);
-      if (res.success == true) {
-        navigate(context, WelcomeScreen(ty: 'change-password',));
-
-      } else {
-        e(res.message ?? res.message);
-        load(false);
-      }
-    } on ApiClientResponse catch (res) {
-      e(res.message ?? res.message);
-      load(false);
-    } on DioError catch (res) {
-      e(res.message ?? res.message);
-      load(false);
-    } finally {
-      load(false);
-    }
-  }*/
-
 
 
 }

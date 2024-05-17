@@ -119,7 +119,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                       }else{
                         registerStore.submitEmail(api, context, (s) {}, (e){
                           showCustomDialog(context, "Notification", e);
-                        });
+                        }, emailController.text);
                       }
                     }:null,
                     loading: registerStore.loading,

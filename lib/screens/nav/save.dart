@@ -15,13 +15,12 @@ class _SaveScreenState extends State<SaveScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: AppColors.lightPurpleColor,
+      backgroundColor: Colors.white,
       body: Center(
         child: Column(
-          //crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset("assets/images/extras/dila.png", color: Colors.white,),
+            Image.asset("assets/images/extras/save.png", color: Colors.white,),
             MainClass.txtB6('Explore', 18.sp),
           ],),
       ),

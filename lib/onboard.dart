@@ -14,7 +14,7 @@ import 'classes/main_class.dart';
 
 class Onboard extends StatefulWidget {
   const Onboard({Key key}) : super(key: key);
-  static const routeName = '/Onboard';
+  static const routeName = '/onboard';
 
   @override
   State<Onboard> createState() => _OnboardState();
@@ -31,9 +31,6 @@ class _OnboardState extends State<Onboard> {
   @override
   void initState() {
     super.initState();
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    //   SystemChrome.setSystemUIOverlayStyle(overlayStyle);
-    // });
     timer = Timer.periodic(const Duration(seconds: 5), (Timer timer) {
       if (currentPage < 3) {
         currentPage++;
@@ -64,63 +61,17 @@ class _OnboardState extends State<Onboard> {
         return false;
       },
       child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        //backgroundColor: Colors.white,
         body: Stack(
           children: [
 
             PageView(
               controller: pageController,
               children: [
-                Stack(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 100),
-                      child: Image.asset('assets/images/onboarding/onboard1.jpeg', fit: BoxFit.fitWidth,),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 450),
-                      child: Image.asset('assets/images/onboarding/fade.jpeg',fit: BoxFit.fitWidth,width: double.infinity,),
-                    ),
-                    Padding(
-                        padding: EdgeInsets.only(top: 500.h,left: 50.w),
-                        child:Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            MainClass.txtB6('The fastest transaction\nprocess only here', 24.sp),
-                            MainClass.bH(20),
-                            MainClass.txtB4(t2, 14.sp),
-                          ],)
-                    ),
-
-
-                  ],
-                ),
-               Stack(
-                 children: [
-                 Padding(
-               padding: const EdgeInsets.only(top: 100),
-                   child: Image.asset('assets/images/onboarding/onboard2.jpeg', fit: BoxFit.fitWidth,),
-                 ),
-
-                 Padding(
-                   padding: EdgeInsets.only(top: 450.h),
-                   child: Image.asset('assets/images/onboarding/fade.jpeg',fit: BoxFit.fitWidth,width: double.infinity,),
-                 ),
-                 Padding(
-                   padding: EdgeInsets.only(top: 500.h,left: 50.w),
-                   child:Column(
-                     crossAxisAlignment: CrossAxisAlignment.center,
-                     children: [
-                     MainClass.txtB6('Finance app the safest\nand most trusted', 24.sp),
-                     MainClass.bH(20),
-                     MainClass.txtB4(t1, 14.sp),
-                   ],)
-                 ),
-               ],)
+              MainClass.onboardingImage('assets/images/onboarding/onboard1.jpeg', 'The fastest transaction\nprocess only here', t2),
+              MainClass.onboardingImage('assets/images/onboarding/onboard2.jpeg', 'Finance app the safest\nand most trusted', t1),
               ],
             ),
-
+            MainClass.skip('Skip',(){Navigator.pushNamed(context, LoginScreen.routeName);},),
             Padding(
               padding: EdgeInsets.only(top: 500.h, left: 20.w, right: 20.w),
               child: Center(
@@ -142,12 +93,8 @@ class _OnboardState extends State<Onboard> {
                   text: 'Get Started',
                   onPressed: () {
                     FocusScope.of(context).unfocus();
-                    //Navigator.pushNamed(context, VerifyOtp.routeName);
                     Navigator.pushNamed(context, LoginScreen.routeName);
-                    //Navigator.pushNamed(context, RegistrationScreen.routeName);
                   },
-                  //loading: registerStore.loading,
-                  loaderColor: Colors.white,
                   textColor: Colors.white,
                   color: Colors.black
               ),

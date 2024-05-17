@@ -2,6 +2,7 @@
 import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:smartpay/models/create_account_response.dart';
 import 'package:smartpay/models/email_token_response.dart';
 import 'package:smartpay/screens/dashboard/dashboard_screen.dart';
 import 'dart:convert';
@@ -12,7 +13,6 @@ import '../../dto/login_dto.dart';
 import '../../models/api_client_response.dart';
 import '../../models/dashboard_response.dart';
 import '../../models/login_response.dart';
-import '../../models/login_response2.dart';
 import '../../store/auth_store/auth_store.dart';
 import '../../utils/alert_dailog.dart';
 
@@ -79,7 +79,8 @@ class ApiClient {
           ApiClientResponse res = ApiClientResponse.fromJson(e.response.data);
           print("this res res res");
           print(res.message);
-          showCustomDialog(context, "Notification",res.message);
+          //showCustomDialog(context, "Notification",res.message);
+          showCustomDialog(context, "Notification", "These credentials do not match our records.");
           return res;
         } else {
           ApiClientResponse res = ApiClientResponse.fromJson(e.response.data);
@@ -109,15 +110,15 @@ class ApiClient {
     }
   }
 
-  //
-  // Future<CreateAccountResponse> createAccount(BuildContext context, Map<String, dynamic> d) async {
-  //   try {
-  //     var response = await dio.post('api/v1/auth/signup', data: d,);
-  //     return CreateAccountResponse.fromJson(response.data);
-  //   } on DioError catch (e) {
-  //     return Future.error(_handleError(context, e));
-  //   }
-  // }
+
+  Future<CreateAccountResponse> createAccount(BuildContext context, Map<String, dynamic> d) async {
+    try {
+      var response = await dio.post('api/v1/auth/register', data: d,);
+      return CreateAccountResponse.fromJson(response.data);
+    } on DioError catch (e) {
+      return Future.error(_handleError(context, e));
+    }
+  }
 
   Future<EmailTokenResponse> verifyEmail(BuildContext context, Map<String, dynamic> d ) async {
     try {
@@ -128,9 +129,18 @@ class ApiClient {
     }
   }
 
+  Future<EmailTokenResponse> verifyEmailToken(BuildContext context, Map<String, dynamic> d ) async {
+    try {
+      var response = await dio.post('api/v1/auth/email/verify', data: d);
+      return EmailTokenResponse.fromJson(response.data);
+    } on DioError catch (e) {
+      return Future.error(_handleError(context, e));
+    }
+  }
+
   Future<DashboardResponse> getSecret(BuildContext context, ) async {
     try {
-      var response = await dio.get('api/v1/auth/dashboard', options: options);
+      var response = await dio.get('api/v1/dashboard', options: options);
       return DashboardResponse.fromJson(response.data);
     } on DioError catch (e) {
       return Future.error(_handleError(context, e));

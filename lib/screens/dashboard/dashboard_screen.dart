@@ -1,8 +1,16 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:move_to_background/move_to_background.dart';
 import 'package:smartpay/classes/colors.dart';
+import 'package:smartpay/classes/main_class.dart';
+import 'package:smartpay/main.dart';
+import 'package:smartpay/screens/services/api_client.dart';
+import 'package:smartpay/store/home_store/home_store.dart';
+
 
 import '../../classes/fonts.dart';
+import '../../classes/nav_bar.dart';
 import '../nav/dilla.dart';
 import '../nav/explore.dart';
 import '../nav/home.dart';
@@ -20,18 +28,22 @@ class _DashboardScreenState extends State<DashBoardScreen> {
   int _pageIndex = 0;
 
   final pages = [
-    const HomeScreen(),
+    const NavBarScreen(),
     const SaveScreen(),
     const Explore(),
     const DillaScreen(),
   ];
 
+  HomeStore homeStore = HomeStore();
+
   PageController _pageController;
+
+  ApiClient apiClient = ApiClient(authStore);
 
   @override
   void initState() {
     super.initState();
-
+    homeStore.fetchUserSecret(context, apiClient);
     _pageController = PageController(initialPage: _pageIndex);
   }
 
@@ -41,16 +53,21 @@ class _DashboardScreenState extends State<DashBoardScreen> {
     super.dispose();
   }
 
-  // int _page = 0;
 
   @override
   Widget build(BuildContext context) {
     // authStore.persistAuth();
-    return Scaffold(
-      extendBody: true,
-      bottomNavigationBar: buildMyNavBar(context),
+    return WillPopScope(
+      onWillPop: () async{
+        MoveToBackground.moveTaskToBack();
+        return false;
+      },
+      child: Scaffold(
+        extendBody: true,
+        bottomNavigationBar: buildMyNavBar(context),
 
-      body: pages[_pageIndex],
+        body: pages[_pageIndex],
+      ),
     );
   }
 
@@ -103,14 +120,13 @@ class _DashboardScreenState extends State<DashBoardScreen> {
 
   void onTabTapped(int index) {
     this._pageController.jumpToPage(index);
-    // this._pageController.animateToPage(index,duration: const Duration(milliseconds: 500),curve: Curves.easeInOut);
   }
 
   Container buildMyNavBar(BuildContext context) {
     return Container(
       height: 84,
       width: 375,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           color: Colors.white,
           border: Border(
             top: BorderSide(width: 0, color: Colors.white),
@@ -126,7 +142,7 @@ class _DashboardScreenState extends State<DashBoardScreen> {
               });
             },
             child: homeItems(
-                icon: "assets/images/home.png",
+                icon: "assets/images/extras/dila.png",
                 title: "Home",
                 index: 0,
                 iconColor: AppColor.colorAppGray),
@@ -139,7 +155,7 @@ class _DashboardScreenState extends State<DashBoardScreen> {
                 });
               },
               child: homeItems(
-                  icon: "assets/images/save.png", title: "Save", index: 1)),
+                  icon: "assets/images/extras/save.png", title: "Save", index: 1)),
           InkWell(
             enableFeedback: false,
             onTap: () {
@@ -148,7 +164,7 @@ class _DashboardScreenState extends State<DashBoardScreen> {
               });
             },
             child: homeItems(
-                icon: "assets/images/explore.png", title: "Explore", index: 2),
+                icon: "assets/images/extras/explore.png", title: "Explore", index: 2),
           ),
           InkWell(
             enableFeedback: false,
@@ -158,18 +174,9 @@ class _DashboardScreenState extends State<DashBoardScreen> {
               });
             },
             child: homeItems(
-                icon: "assets/images/learn.png", title: "Learn", index: 3),
+                icon: "assets/images/extras/dila.png", title: "Learn", index: 3),
           ),
-          InkWell(
-            enableFeedback: false,
-            onTap: () {
-              setState(() {
-                _pageIndex = 4;
-              });
-            },
-            child: homeItems(
-                icon: "assets/images/dila.png", title: "Dilla", index: 4),
-          ),
+
         ],
       ),
     );
@@ -183,11 +190,9 @@ class _DashboardScreenState extends State<DashBoardScreen> {
         ),
         _pageIndex == index
             ? Padding(
-          //padding: const EdgeInsets.all(15),
           padding: const EdgeInsets.only(top: 15.0),
           child: Image.asset(
             icon,
-            //"assets/images/transactionicon.png",
             color: AppColor.colorAppBlack,
             width: 25, height: 20,
           ),
@@ -204,15 +209,8 @@ class _DashboardScreenState extends State<DashBoardScreen> {
         _pageIndex == index
             ? Padding(
           padding: const EdgeInsets.only(top: 6.86),
-          child: Text(
-            title,
-            style: TextStyle(
-                fontFamily: AppFonts.sfPro,
-                fontWeight: FontWeight.w400,
-                fontSize: 14,
-                fontStyle: FontStyle.normal,
-                color: AppColor.colorAppBlack),
-          ),
+          child: MainClass.txtS4(title, 14.sp),
+
         )
             : Padding(
           padding: const EdgeInsets.only(top: 6.86),
@@ -223,7 +221,7 @@ class _DashboardScreenState extends State<DashBoardScreen> {
                 fontWeight: FontWeight.w400,
                 fontSize: 14,
                 fontStyle: FontStyle.normal,
-                color: AppColor.colorAppGray),
+                color: AppColor.colorAppGray2),
           ),
         )
       ],

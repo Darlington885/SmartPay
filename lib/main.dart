@@ -55,12 +55,6 @@ AuthStore authStore;
 
 class _SmartPayAppState extends State<SmartPayApp> {
 
-  // @override
-  // void initState() {
-  //   loadJsonData(assetBillerJson);
-  //   super.initState();
-  // }
-
   @override
   Widget build(BuildContext context) {
     authStore = Provider.of<AuthStore>(context);
@@ -69,32 +63,12 @@ class _SmartPayAppState extends State<SmartPayApp> {
       designSize: const Size(375, 812),
       splitScreenMode: true,
       minTextAdapt: true,
-      builder: (BuildContext context, Widget child) => const MaterialApp(
+      builder: (BuildContext context, Widget child) =>  MaterialApp(
         debugShowCheckedModeBanner: false,
         showPerformanceOverlay: false,
-        //initialRoute:authStore.onboarded ? SplashScreen.routeName : SplashScreen.routeName,
-        initialRoute:SplashScreen.routeName,
+        initialRoute:authStore.onboarded ? SplashScreen.routeName : SplashScreen.routeName,
         onGenerateRoute: RouteGenerator.generateRoute,
       ),
     );
-    /* return DevicePreview(
-        enabled: true,
-        builder: (BuildContext context) {
-          return ScreenUtilInit(
-            designSize: const Size(375, 812),
-            splitScreenMode: true,
-            minTextAdapt: true,
-            builder: (BuildContext context, Widget child) =>
-            const MaterialApp(
-              useInheritedMediaQuery: true,
-              builder: DevicePreview.appBuilder,
-              debugShowCheckedModeBanner: false,
-              showPerformanceOverlay: false,
-              initialRoute:SplashScreen.routeName,
-              //authStore.onboarded ? SplashScreen.routeName : SplashScreen.routeName,
-              onGenerateRoute: RouteGenerator.generateRoute,
-            ),
-          );
-        });*/
   }
 }

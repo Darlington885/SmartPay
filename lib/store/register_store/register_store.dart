@@ -4,7 +4,12 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:mobx/mobx.dart';
+import 'package:smartpay/classes/response_data.dart';
+import 'package:smartpay/models/dashboard_response.dart';
+import 'package:smartpay/screens/register/registration_screen.dart';
+import 'package:smartpay/screens/register/set_pin.dart';
 import 'package:smartpay/screens/register/verify_otp.dart';
+import 'package:smartpay/utils/navigators.dart';
 import 'package:validators/validators.dart';
 
 import '../../main.dart';
@@ -39,6 +44,9 @@ abstract class _RegisterStore with Store {
 
   @observable
   String fullName;
+
+  @observable
+  String country;
 
   @observable
   String username;
@@ -184,18 +192,8 @@ abstract class _RegisterStore with Store {
   bool get hasErrors {
     validateFullName(fullName);
     validateUserName(username);
-    validatePhone(phoneNumber);
     validatePassword(password);
     return error.hasErrors;
-  }
-
-  bool get hasErrorsTwo {
-    validateFullName(fullName);
-    validateUserName(lastName);
-    validateEmail(email);
-    validatePassword(password);
-    validateConfirmPassword(confirmPassword);
-    return error.hasErrorsTwo;
   }
 
   bool get hasOtpError{
@@ -210,29 +208,29 @@ abstract class _RegisterStore with Store {
   }
 
 
-/*
   Future<void> submit(ApiClient api, BuildContext context, Function(String) s,
-      Function(String) e, String txt) async {
-    if (hasErrors) return;
+      Function(String) e,String email, String deviceNam) async {
+    //if (hasErrors) return;
 
     try {
       load(true);
 
       var d = {
 
-        "first_name":firstName,
-        "last_name":lastName,
-        "phone_number": phoneNumber,
+        "full_name":fullName,
+        "username":username,
         "email":email,
+        "country": country,
         "password":password,
+        "device_name": deviceNam
 
       };
 
       var res = await api.createAccount(context, d);
 
-      if (res.success == true) {
-        ResponseData.createAccountResponse = res;
-        Navigator.pushNamed(context, VerifyAccount.routeName);
+      if (res.status == true) {
+        print(res);
+        Navigator.pushNamed(context, SetPin.routeName);
       }
       else {
         e(res.message ?? res.message);
@@ -249,21 +247,21 @@ abstract class _RegisterStore with Store {
     }
   }
 
-  Future<void> submitTwo(ApiClient api, BuildContext context,
-      Function(String) s, Function(String) e,) async {
+  Future<void> submitOtp(ApiClient api, BuildContext context,
+      Function(String) s, Function(String) e,String em2) async {
 
     try {
       load(true);
 
       var d = {
-        "email": ResponseData.createAccountResponse.data.email,
-        "otp": otp,
+        "email":em2,
+        "token": otp,
       };
 
-      var res = await api.verifyAccount(context, d, ResponseData.createAccountResponse.data.email, otp);
+      var res = await api.verifyEmailToken(context, d,);
 
-      if (res.success == true) {
-          Navigator.pushNamed(context, WelcomeScreen.routeName);
+      if (res.status == true) {
+          navigate(context, RegistrationScreen(email: em2));
       } else {
         e(res.message ?? res.message);
         load(false);
@@ -278,9 +276,8 @@ abstract class _RegisterStore with Store {
       load(false);
     }
   }
-*/
 
-  Future<void> submitEmail(ApiClient api, BuildContext context, Function(String) s, Function(String) e) async {
+  Future<void> submitEmail(ApiClient api, BuildContext context, Function(String) s, Function(String) e, String em) async {
     if (hasErrorsEmail) return;
 
     try {
@@ -292,7 +289,9 @@ abstract class _RegisterStore with Store {
       var res = await api.verifyEmail(context, data);
 
       if(res.status == true){
-        Navigator.pushNamed(context, VerifyOtp.routeName);
+        ResponseData.emailTokenResponse = res;
+        navigate(context, VerifyOtp(email: em));
+        //Navigator.pushNamed(context, VerifyOtp.routeName);
       }else{
         e(res.message ?? res.message);
       }
@@ -310,44 +309,6 @@ abstract class _RegisterStore with Store {
       load(false);
     }
   }
-
- /* Future<void> submitPin(ApiClient api, BuildContext context, Function(String) s, Function(String) e,
-      String email) async {
-    //if (hasErrorsEmail) return;
-
-    try {
-      load(true);
-
-      var d = {
-        "email": email,
-        //'token': token
-
-      };
-      //var res = await api.forgotPin(context, email);
-      //var res = await api.forgotPin(context, d);
-
-      if(res.status == true){
-
-        // Navigator.pushNamed(context, ConfirmEmailSCreen.routeName);
-        Navigator.pushNamed(context, ChangePinVerificationScreen.routeName);
-      }else{
-        e(res.message ?? res.message);
-      }
-      s(res.message);
-    }on ApiClientResponse catch (err) {
-      load(false);
-      e(err.message ?? "An Error Occurred");
-
-    }on DioError catch (err) {
-      load(false);
-      e(err.message ?? "An Error Occurred");
-
-      // e('An error occurred');
-    }
-    finally {
-      load(false);
-    }
-  }*/
 
 
 
@@ -369,6 +330,9 @@ abstract class _RegisterErrorStore with Store {
 
   @observable
   String email;
+
+  @observable
+  String country;
 
   @observable
   String phoneNumber;

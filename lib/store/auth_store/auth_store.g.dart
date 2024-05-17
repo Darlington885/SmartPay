@@ -10,7 +10,7 @@ part of 'auth_store.dart';
 
 mixin _$AuthStore on _AuthStore, Store {
    final _$onboardedAtom =
-      Atom(name: '_AuthStore.onboarded',);
+      Atom(name: '_AuthStore.onboarded', );
 
   @override
   bool get onboarded {
@@ -26,7 +26,7 @@ mixin _$AuthStore on _AuthStore, Store {
   }
 
    final _$loginPinAtom =
-      Atom(name: '_AuthStore.loginPin',);
+      Atom(name: '_AuthStore.loginPin', );
 
   @override
   String get loginPin {
@@ -42,7 +42,7 @@ mixin _$AuthStore on _AuthStore, Store {
   }
 
    final _$loginPasswordAtom =
-      Atom(name: '_AuthStore.loginPassword',);
+      Atom(name: '_AuthStore.loginPassword', );
 
   @override
   String get loginPassword {
@@ -58,7 +58,7 @@ mixin _$AuthStore on _AuthStore, Store {
   }
 
    final _$loginUsernameAtom =
-      Atom(name: '_AuthStore.loginUsername',);
+      Atom(name: '_AuthStore.loginUsername', );
 
   @override
   String get loginUsername {
@@ -74,7 +74,7 @@ mixin _$AuthStore on _AuthStore, Store {
   }
 
    final _$countryCodeAtom =
-      Atom(name: '_AuthStore.countryCode',);
+      Atom(name: '_AuthStore.countryCode', );
 
   @override
   String get countryCode {
@@ -90,7 +90,7 @@ mixin _$AuthStore on _AuthStore, Store {
   }
 
    final _$loginTokenAtom =
-      Atom(name: '_AuthStore.loginToken',);
+      Atom(name: '_AuthStore.loginToken', );
 
   @override
   String get loginToken {
@@ -106,7 +106,7 @@ mixin _$AuthStore on _AuthStore, Store {
   }
 
    final _$loginEmailAtom =
-      Atom(name: '_AuthStore.loginEmail',);
+      Atom(name: '_AuthStore.loginEmail', );
 
   @override
   String get loginEmail {
@@ -122,7 +122,7 @@ mixin _$AuthStore on _AuthStore, Store {
   }
 
    final _$profileNameAtom =
-      Atom(name: '_AuthStore.profileName',);
+      Atom(name: '_AuthStore.profileName', );
 
   @override
   String get profileName {
@@ -138,7 +138,7 @@ mixin _$AuthStore on _AuthStore, Store {
   }
 
    final _$isSecurityEnableAtom =
-      Atom(name: '_AuthStore.isSecurityEnable',);
+      Atom(name: '_AuthStore.isSecurityEnable', );
 
   @override
   bool get isSecurityEnable {
@@ -154,7 +154,7 @@ mixin _$AuthStore on _AuthStore, Store {
   }
 
    final _$profilePictureAtom =
-      Atom(name: '_AuthStore.profilePicture',);
+      Atom(name: '_AuthStore.profilePicture', );
 
   @override
   String get profilePicture {

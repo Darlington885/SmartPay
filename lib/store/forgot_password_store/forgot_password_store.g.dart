@@ -9,8 +9,8 @@ part of 'forgot_password_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$ForgotPasswordStore on _ForgotPasswordStore, Store {
-   final _$loadingAtom =
-      Atom(name: '_ForgotPasswordStore.loading',);
+  final _$loadingAtom =
+      Atom(name: '_ForgotPasswordStore.loading', );
 
   @override
   bool get loading {
@@ -25,8 +25,8 @@ mixin _$ForgotPasswordStore on _ForgotPasswordStore, Store {
     });
   }
 
-   final _$passwordVisibleAtom =
-      Atom(name: '_ForgotPasswordStore.passwordVisible',);
+  final _$passwordVisibleAtom =
+      Atom(name: '_ForgotPasswordStore.passwordVisible', );
 
   @override
   bool get passwordVisible {
@@ -41,8 +41,8 @@ mixin _$ForgotPasswordStore on _ForgotPasswordStore, Store {
     });
   }
 
-   final _$passwordVisibleTwoAtom =
-      Atom(name: '_ForgotPasswordStore.passwordVisibleTwo',);
+  final _$passwordVisibleTwoAtom =
+      Atom(name: '_ForgotPasswordStore.passwordVisibleTwo', );
 
   @override
   bool get passwordVisibleTwo {
@@ -57,8 +57,8 @@ mixin _$ForgotPasswordStore on _ForgotPasswordStore, Store {
     });
   }
 
-   final _$passwordVisibleThreeAtom =
-      Atom(name: '_ForgotPasswordStore.passwordVisibleThree',);
+  final _$passwordVisibleThreeAtom =
+      Atom(name: '_ForgotPasswordStore.passwordVisibleThree', );
 
   @override
   bool get passwordVisibleThree {
@@ -74,8 +74,24 @@ mixin _$ForgotPasswordStore on _ForgotPasswordStore, Store {
     });
   }
 
-   final _$emailAtom =
-      Atom(name: '_ForgotPasswordStore.email',);
+  final _$isActiveAtom =
+      Atom(name: '_ForgotPasswordStore.isActive', );
+
+  @override
+  bool get isActive {
+    _$isActiveAtom.reportRead();
+    return super.isActive;
+  }
+
+  @override
+  set isActive(bool value) {
+    _$isActiveAtom.reportWrite(value, super.isActive, () {
+      super.isActive = value;
+    });
+  }
+
+  final _$emailAtom =
+      Atom(name: '_ForgotPasswordStore.email', );
 
   @override
   String get email {
@@ -90,8 +106,8 @@ mixin _$ForgotPasswordStore on _ForgotPasswordStore, Store {
     });
   }
 
-   final _$otpAtom =
-      Atom(name: '_ForgotPasswordStore.otp',);
+  final _$otpAtom =
+      Atom(name: '_ForgotPasswordStore.otp', );
 
   @override
   String get otp {
@@ -106,8 +122,8 @@ mixin _$ForgotPasswordStore on _ForgotPasswordStore, Store {
     });
   }
 
-   final _$currentPasswordAtom =
-      Atom(name: '_ForgotPasswordStore.currentPassword',);
+  final _$currentPasswordAtom =
+      Atom(name: '_ForgotPasswordStore.currentPassword', );
 
   @override
   String get currentPassword {
@@ -122,8 +138,8 @@ mixin _$ForgotPasswordStore on _ForgotPasswordStore, Store {
     });
   }
 
-   final _$passwordAtom =
-      Atom(name: '_ForgotPasswordStore.password',);
+  final _$passwordAtom =
+      Atom(name: '_ForgotPasswordStore.password', );
 
   @override
   String get password {
@@ -138,8 +154,8 @@ mixin _$ForgotPasswordStore on _ForgotPasswordStore, Store {
     });
   }
 
-   final _$confirmPasswordAtom =
-      Atom(name: '_ForgotPasswordStore.confirmPassword',);
+  final _$confirmPasswordAtom =
+      Atom(name: '_ForgotPasswordStore.confirmPassword', );
 
   @override
   String get confirmPassword {
@@ -154,8 +170,8 @@ mixin _$ForgotPasswordStore on _ForgotPasswordStore, Store {
     });
   }
 
-   final _$_ForgotPasswordStoreActionController =
-      ActionController(name: '_ForgotPasswordStore',);
+  final _$_ForgotPasswordStoreActionController =
+      ActionController(name: '_ForgotPasswordStore', );
 
   @override
   void load(bool load) {
@@ -230,6 +246,7 @@ loading: ${loading},
 passwordVisible: ${passwordVisible},
 passwordVisibleTwo: ${passwordVisibleTwo},
 passwordVisibleThree: ${passwordVisibleThree},
+isActive: ${isActive},
 email: ${email},
 otp: ${otp},
 currentPassword: ${currentPassword},
@@ -262,8 +279,8 @@ mixin _$ForgotPasswordErrorStore on _ForgotPasswordErrorStore, Store {
               name: '_ForgotPasswordErrorStore.hasErrors'))
           .value;
 
-   final _$emailAtom =
-      Atom(name: '_ForgotPasswordErrorStore.email',);
+  final _$emailAtom =
+      Atom(name: '_ForgotPasswordErrorStore.email', );
 
   @override
   String get email {
@@ -278,8 +295,8 @@ mixin _$ForgotPasswordErrorStore on _ForgotPasswordErrorStore, Store {
     });
   }
 
-   final _$otpAtom =
-      Atom(name: '_ForgotPasswordErrorStore.otp',);
+  final _$otpAtom =
+      Atom(name: '_ForgotPasswordErrorStore.otp', );
 
   @override
   String get otp {
@@ -294,8 +311,8 @@ mixin _$ForgotPasswordErrorStore on _ForgotPasswordErrorStore, Store {
     });
   }
 
-   final _$currentPasswordAtom =
-      Atom(name: '_ForgotPasswordErrorStore.currentPassword',);
+  final _$currentPasswordAtom =
+      Atom(name: '_ForgotPasswordErrorStore.currentPassword', );
 
   @override
   String get currentPassword {
@@ -310,8 +327,8 @@ mixin _$ForgotPasswordErrorStore on _ForgotPasswordErrorStore, Store {
     });
   }
 
-   final _$passwordAtom =
-      Atom(name: '_ForgotPasswordErrorStore.password',);
+  final _$passwordAtom =
+      Atom(name: '_ForgotPasswordErrorStore.password', );
 
   @override
   String get password {
@@ -326,8 +343,8 @@ mixin _$ForgotPasswordErrorStore on _ForgotPasswordErrorStore, Store {
     });
   }
 
-   final _$confirmPasswordAtom =
-      Atom(name: '_ForgotPasswordErrorStore.confirmPassword',);
+  final _$confirmPasswordAtom =
+      Atom(name: '_ForgotPasswordErrorStore.confirmPassword', );
 
   @override
   String get confirmPassword {

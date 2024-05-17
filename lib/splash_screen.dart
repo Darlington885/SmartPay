@@ -3,12 +3,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartpay/classes/main_class.dart';
+import 'package:smartpay/main.dart';
 import 'package:smartpay/screens/auth/login.dart';
 import 'package:smartpay/utils/navigators.dart';
 
 import 'classes/colors.dart';
 import 'classes/fonts.dart';
-import 'main.dart';
 import 'onboard.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -24,9 +24,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Timer(const Duration(seconds: 3), () async{
-      //authStore.onboarded ? navigateReplace(context, const LoginScreen()):
+      authStore.onboarded ? navigateReplace(context, const LoginScreen()):
       navigateReplace(context, const Onboard());
-      //navigateReplace(context, const StoreType());
     });
     super.initState();
   }

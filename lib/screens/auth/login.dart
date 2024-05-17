@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +18,6 @@ import '../../utils/alert_dailog.dart';
 import '../../widgets/button.dart';
 import '../../widgets/input_field.dart';
 import '../forgot_password/forgot_password.dart';
-import '../register/registration_screen.dart';
 import '../register/verify_email.dart';
 import '../services/api_client.dart';
 import '../services/auth_storage.dart';
@@ -138,7 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       }else{
                         store.submit(api, context, (s) {}, (e){
                           showCustomDialog(context, "Notification", e);
-                        }, devName);
+                        }, devId);
                       }
                     },
                     loading: store.loading,
@@ -167,7 +168,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 MainClass.bW(20),
                 MainClass.socialIcon('assets/images/extras/apple.png',(){}),
               ],),
-            MainClass.bH(180),
+            MainClass.bH(170),
             RichText(
               textAlign: TextAlign.center,
               text: TextSpan(
@@ -228,4 +229,5 @@ class _LoginScreenState extends State<LoginScreen> {
       //box.write('deviceInfo', '$devId,$devName,$devOS');
     }
   }
+
 }

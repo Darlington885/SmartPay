@@ -9,4 +9,5 @@ class AppColor{
   static const Color colorAppGray3 = Color(0xFF6B7280);
   static const Color colorAppGray4 = Color(0xFFE5E7EB);
   static const Color colorAppBlack = Color(0xFF111827);
+  static const Color layerColor = Color.fromRGBO(226, 226, 226, 1);
 }

@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-//import 'package:pin_code_fields/pin_code_fields.dart';
-//import 'package:pin_code_text_field/pin_code_text_field.dart';
+
 import 'package:provider/provider.dart';
+import 'package:smartpay/classes/response_data.dart';
 import 'package:smartpay/screens/register/registration_screen.dart';
 import 'package:smartpay/screens/services/api_client.dart';
+import 'package:timer_button/timer_button.dart';
 
 import '../../classes/colors.dart';
 import '../../classes/fonts.dart';
@@ -16,6 +17,7 @@ import '../../utils/alert_dailog.dart';
 import '../../widgets/button.dart';
 
 class VerifyOtp extends StatefulWidget {
+  final String email;
 
   final double buttonSize;
   final Color buttonColor;
@@ -23,13 +25,15 @@ class VerifyOtp extends StatefulWidget {
   final TextEditingController controller;
   final Function delete;
   final Function onSubmit;
-  const VerifyOtp({Key key,
+   const VerifyOtp({Key key,
     this.buttonSize = 70,
     this.buttonColor = Colors.white,
     this.iconColor = Colors.amber,
     this.delete,
     this.onSubmit,
     this.controller,
+     this.email
+
   }) : super(key: key);
   static const routeName = '/verifyOtp';
 
@@ -46,13 +50,18 @@ class _VerifyOtpState extends State<VerifyOtp> {
   String errorMessage;
   TextEditingController pinController = TextEditingController();
 
-  @override
-  void dispose() {
-    dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   pinController.dispose();
+  //   super.dispose();
+  // }
+
+
+
   @override
   Widget build(BuildContext context) {
+    String originalString = "${widget.email}";
+    String replacedString = "***" + originalString.substring(3);
     final api = Provider.of<ApiClient>(context);
     return WillPopScope(
       onWillPop: () async {
@@ -67,7 +76,61 @@ class _VerifyOtpState extends State<VerifyOtp> {
             MainClass.appTop(context),
             MainClass.bH(20),
             MainClass.txtS6('Verify it\'s you', 24.sp),
+            MainClass.bH(10),
+            RichText(
+              textAlign: TextAlign.start,
+              text: TextSpan(
+                text: 'We sent a code ',
+                style: TextStyle(
+                    color: AppColor.colorAppGray3,
+                    fontSize: 16.0.sp,
+                    letterSpacing: 0.3,
+                    fontWeight: FontWeight.w400,
+                    fontFamily: AppFonts.sfPro,
+                    fontStyle: FontStyle.normal),
+                children: <TextSpan>[
+                  TextSpan(
+                      text: '(${ResponseData.emailTokenResponse.data.token})',
+                      style:TextStyle(
+                          color: AppColor.colorAppBlack,
+                          fontSize: 16.0.sp,
+                          letterSpacing: 0.3,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: AppFonts.sfPro,
+                          fontStyle: FontStyle.normal)),
+                  TextSpan(
+                      text: ' to ',
+                      style:TextStyle(
+                          color: AppColor.colorAppGray3,
+                          fontSize: 16.0.sp,
+                          letterSpacing: 0.3,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: AppFonts.sfPro,
+                          fontStyle: FontStyle.normal)),
+                  TextSpan(
+                      //text: '(${widget.email}).',
+                      text: '(${replacedString}).',
+                      style:TextStyle(
+                          color: AppColor.colorAppBlack,
+                          fontSize: 16.0.sp,
+                          letterSpacing: 0.3,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: AppFonts.sfPro,
+                          fontStyle: FontStyle.normal)),
+                  TextSpan(
+                      text: ' Enter it here to verify your identity',
+                      style:TextStyle(
+                          color: AppColor.colorAppGray3,
+                          fontSize: 16.0.sp,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: AppFonts.sfPro,
+                          fontStyle: FontStyle.normal)),
+                ],
+              ),
+            ),
+           // MainClass.txtS4('We sent a code(${ResponseData.emailTokenResponse.data.token}) to (${widget.email} ). Enter it here to verify your identity', 16.sp),
             MainClass.bH(30),
+
             Observer(
               builder:(_) => Row(
                 children: [
@@ -75,7 +138,7 @@ class _VerifyOtpState extends State<VerifyOtp> {
                     child: PinCodeTextField(
                       showCursor: false,
                       cursorHeight: 20,
-                      autoFocus: true,
+                      autoFocus: false,
                       textStyle: TextStyle(
                         color: AppColor.colorAppBlack,
                         fontFamily: AppFonts.sfPro,
@@ -113,7 +176,7 @@ class _VerifyOtpState extends State<VerifyOtp> {
                       scrollPadding: const EdgeInsets.all(0),
                       controller: pinController,
                       obscureText: false,
-                      keyboardType: TextInputType.number,
+                      keyboardType: TextInputType.none,
                       onCompleted: (v){
                         registerStore.otp = v;
                         if(pinController.text.length == 5) {
@@ -138,9 +201,6 @@ class _VerifyOtpState extends State<VerifyOtp> {
                         } else {
                           setState(() {registerStore.isActive2=false;});
                         }
-                        // setState(() {
-                        // // forgotPasswordStore.otp = value;
-                        // });
                       },beforeTextPaste: (text){
                       return true;
                     },),
@@ -148,7 +208,32 @@ class _VerifyOtpState extends State<VerifyOtp> {
                 ],
               ),
             ),
-            MainClass.bH(80),
+            MainClass.bH(20),
+            Padding(
+      padding: EdgeInsets.symmetric(horizontal: 80.w),
+      child: TimerButton(
+        label: 'Resend code in',
+        timeOutInSeconds: 30,
+        buttonType: ButtonType.FlatButton,
+        disabledColor: Colors.grey,
+        color: AppColor.colorAppGray,
+        disabledTextStyle: TextStyle(
+            fontFamily: AppFonts.sfPro,
+            fontWeight: FontWeight.w500,
+            fontSize: 16,
+            fontStyle: FontStyle.normal,
+            color: Colors.grey.shade100
+        ),
+        activeTextStyle:  TextStyle(
+            fontFamily: AppFonts.sfPro,
+            fontWeight: FontWeight.w500,
+            fontSize: 16,
+            fontStyle: FontStyle.normal,
+            color: Colors.grey
+        ), onPressed: () {  },
+      ),
+    ),
+            MainClass.bH(30),
             Observer(
               builder: (ctx) => SizedBox(
                 width: double.infinity,
@@ -159,9 +244,9 @@ class _VerifyOtpState extends State<VerifyOtp> {
                       if(registerStore.hasOtpError){
                         return;
                       }else{
-                        registerStore.submitEmail(api, context, (s) {}, (e){
+                        registerStore.submitOtp(api, context, (s) {}, (e){
                           showCustomDialog(context, "Notification", e);
-                        });
+                        }, widget.email);
                       }
                     }:null,
                     loading: registerStore.loading,
@@ -174,7 +259,7 @@ class _VerifyOtpState extends State<VerifyOtp> {
             ),
 
 
-            MainClass.bH(100),
+            MainClass.bH(40),
             NumPad(
               buttonSize: 57,
               // buttonColor: Colors.purple,

@@ -10,7 +10,7 @@ part of 'login_store.dart';
 
 mixin _$LoginStore on _LoginStore, Store {
    final _$loadingAtom =
-      Atom(name: '_LoginStore.loading',);
+      Atom(name: '_LoginStore.loading', );
 
   @override
   bool get loading {
@@ -25,7 +25,7 @@ mixin _$LoginStore on _LoginStore, Store {
     });
   }
 
-   final _$absorbAtom = Atom(name: '_LoginStore.absorb',);
+   final _$absorbAtom = Atom(name: '_LoginStore.absorb', );
 
   @override
   bool get absorb {
@@ -41,7 +41,7 @@ mixin _$LoginStore on _LoginStore, Store {
   }
 
    final _$passwordVisibleAtom =
-      Atom(name: '_LoginStore.passwordVisible',);
+      Atom(name: '_LoginStore.passwordVisible', );
 
   @override
   bool get passwordVisible {
@@ -56,7 +56,7 @@ mixin _$LoginStore on _LoginStore, Store {
     });
   }
 
-   final _$emailAtom = Atom(name: '_LoginStore.email',);
+   final _$emailAtom = Atom(name: '_LoginStore.email', );
 
   @override
   String get email {
@@ -71,7 +71,7 @@ mixin _$LoginStore on _LoginStore, Store {
     });
   }
 
-   final _$tokenAtom = Atom(name: '_LoginStore.token',);
+   final _$tokenAtom = Atom(name: '_LoginStore.token', );
 
   @override
   String get token {
@@ -86,7 +86,7 @@ mixin _$LoginStore on _LoginStore, Store {
     });
   }
 
-   final _$nameAtom = Atom(name: '_LoginStore.name',);
+   final _$nameAtom = Atom(name: '_LoginStore.name', );
 
   @override
   String get name {
@@ -102,7 +102,7 @@ mixin _$LoginStore on _LoginStore, Store {
   }
 
    final _$usernameAtom =
-      Atom(name: '_LoginStore.username',);
+      Atom(name: '_LoginStore.username', );
 
   @override
   String get username {
@@ -118,7 +118,7 @@ mixin _$LoginStore on _LoginStore, Store {
   }
 
    final _$contactNumberAtom =
-      Atom(name: '_LoginStore.contactNumber',);
+      Atom(name: '_LoginStore.contactNumber', );
 
   @override
   String get contactNumber {
@@ -134,7 +134,7 @@ mixin _$LoginStore on _LoginStore, Store {
   }
 
    final _$countryCodeAtom =
-      Atom(name: '_LoginStore.countryCode',);
+      Atom(name: '_LoginStore.countryCode', );
 
   @override
   String get countryCode {
@@ -150,7 +150,7 @@ mixin _$LoginStore on _LoginStore, Store {
   }
 
    final _$passwordAtom =
-      Atom(name: '_LoginStore.password',);
+      Atom(name: '_LoginStore.password', );
 
   @override
   String get password {
@@ -166,7 +166,7 @@ mixin _$LoginStore on _LoginStore, Store {
   }
 
    final _$_LoginStoreActionController =
-      ActionController(name: '_LoginStore',);
+      ActionController(name: '_LoginStore', );
 
   @override
   void load(bool load) {
@@ -201,7 +201,6 @@ mixin _$LoginStore on _LoginStore, Store {
     }
   }
 
-
   @override
   String toString() {
     return '''
@@ -214,8 +213,7 @@ name: ${name},
 username: ${username},
 contactNumber: ${contactNumber},
 countryCode: ${countryCode},
-password: ${password},
-
+password: ${password}
     ''';
   }
 }
@@ -229,7 +227,7 @@ mixin _$LoginErrorStore on _LoginErrorStore, Store {
               name: '_LoginErrorStore.hasErrors'))
           .value;
 
-   final _$nameAtom = Atom(name: '_LoginErrorStore.name',);
+   final _$nameAtom = Atom(name: '_LoginErrorStore.name', );
 
   @override
   String get name {
@@ -245,7 +243,7 @@ mixin _$LoginErrorStore on _LoginErrorStore, Store {
   }
 
    final _$usernameAtom =
-      Atom(name: '_LoginErrorStore.username',);
+      Atom(name: '_LoginErrorStore.username', );
 
   @override
   String get username {
@@ -261,7 +259,7 @@ mixin _$LoginErrorStore on _LoginErrorStore, Store {
   }
 
    final _$confirmPasswordAtom =
-      Atom(name: '_LoginErrorStore.confirmPassword',);
+      Atom(name: '_LoginErrorStore.confirmPassword', );
 
   @override
   String get confirmPassword {
@@ -277,7 +275,7 @@ mixin _$LoginErrorStore on _LoginErrorStore, Store {
   }
 
    final _$emailAtom =
-      Atom(name: '_LoginErrorStore.email',);
+      Atom(name: '_LoginErrorStore.email', );
 
   @override
   String get email {
@@ -293,7 +291,7 @@ mixin _$LoginErrorStore on _LoginErrorStore, Store {
   }
 
    final _$passwordAtom =
-      Atom(name: '_LoginErrorStore.password',);
+      Atom(name: '_LoginErrorStore.password', );
 
   @override
   String get password {

@@ -10,7 +10,7 @@ part of 'register_store.dart';
 
 mixin _$RegisterStore on _RegisterStore, Store {
    final _$loadingAtom =
-      Atom(name: '_RegisterStore.loading',);
+      Atom(name: '_RegisterStore.loading', );
 
   @override
   bool get loading {
@@ -25,8 +25,40 @@ mixin _$RegisterStore on _RegisterStore, Store {
     });
   }
 
+   final _$isActiveAtom =
+      Atom(name: '_RegisterStore.isActive', );
+
+  @override
+  bool get isActive {
+    _$isActiveAtom.reportRead();
+    return super.isActive;
+  }
+
+  @override
+  set isActive(bool value) {
+    _$isActiveAtom.reportWrite(value, super.isActive, () {
+      super.isActive = value;
+    });
+  }
+
+   final _$isActive2Atom =
+      Atom(name: '_RegisterStore.isActive2', );
+
+  @override
+  bool get isActive2 {
+    _$isActive2Atom.reportRead();
+    return super.isActive2;
+  }
+
+  @override
+  set isActive2(bool value) {
+    _$isActive2Atom.reportWrite(value, super.isActive2, () {
+      super.isActive2 = value;
+    });
+  }
+
    final _$passwordVisibleAtom =
-      Atom(name: '_RegisterStore.passwordVisible',);
+      Atom(name: '_RegisterStore.passwordVisible', );
 
   @override
   bool get passwordVisible {
@@ -42,7 +74,7 @@ mixin _$RegisterStore on _RegisterStore, Store {
   }
 
    final _$passwordVisibleTwoAtom =
-      Atom(name: '_RegisterStore.passwordVisibleTwo',);
+      Atom(name: '_RegisterStore.passwordVisibleTwo', );
 
   @override
   bool get passwordVisibleTwo {
@@ -58,7 +90,7 @@ mixin _$RegisterStore on _RegisterStore, Store {
   }
 
    final _$passwordVisibleThreeAtom =
-      Atom(name: '_RegisterStore.passwordVisibleThree',);
+      Atom(name: '_RegisterStore.passwordVisibleThree', );
 
   @override
   bool get passwordVisibleThree {
@@ -75,7 +107,7 @@ mixin _$RegisterStore on _RegisterStore, Store {
   }
 
    final _$fullNameAtom =
-      Atom(name: '_RegisterStore.fullName',);
+      Atom(name: '_RegisterStore.fullName', );
 
   @override
   String get fullName {
@@ -90,8 +122,24 @@ mixin _$RegisterStore on _RegisterStore, Store {
     });
   }
 
-   final _$usernameAtom =
-      Atom(name: '_RegisterStore.username',);
+  final _$countryAtom =
+      Atom(name: '_RegisterStore.country', );
+
+  @override
+  String get country {
+    _$countryAtom.reportRead();
+    return super.country;
+  }
+
+  @override
+  set country(String value) {
+    _$countryAtom.reportWrite(value, super.country, () {
+      super.country = value;
+    });
+  }
+
+  final _$usernameAtom =
+      Atom(name: '_RegisterStore.username', );
 
   @override
   String get username {
@@ -106,8 +154,8 @@ mixin _$RegisterStore on _RegisterStore, Store {
     });
   }
 
-   final _$storeNameAtom =
-      Atom(name: '_RegisterStore.storeName',);
+  final _$storeNameAtom =
+      Atom(name: '_RegisterStore.storeName', );
 
   @override
   String get storeName {
@@ -122,8 +170,8 @@ mixin _$RegisterStore on _RegisterStore, Store {
     });
   }
 
-   final _$lastNameAtom =
-      Atom(name: '_RegisterStore.lastName',);
+  final _$lastNameAtom =
+      Atom(name: '_RegisterStore.lastName', );
 
   @override
   String get lastName {
@@ -138,7 +186,7 @@ mixin _$RegisterStore on _RegisterStore, Store {
     });
   }
 
-   final _$emailAtom = Atom(name: '_RegisterStore.email',);
+  final _$emailAtom = Atom(name: '_RegisterStore.email', );
 
   @override
   String get email {
@@ -153,7 +201,7 @@ mixin _$RegisterStore on _RegisterStore, Store {
     });
   }
 
-   final _$otpAtom = Atom(name: '_RegisterStore.otp',);
+  final _$otpAtom = Atom(name: '_RegisterStore.otp', );
 
   @override
   String get otp {
@@ -168,8 +216,8 @@ mixin _$RegisterStore on _RegisterStore, Store {
     });
   }
 
-   final _$phoneNumberAtom =
-      Atom(name: '_RegisterStore.phoneNumber',);
+  final _$phoneNumberAtom =
+      Atom(name: '_RegisterStore.phoneNumber', );
 
   @override
   String get phoneNumber {
@@ -184,8 +232,8 @@ mixin _$RegisterStore on _RegisterStore, Store {
     });
   }
 
-   final _$countryCodeAtom =
-      Atom(name: '_RegisterStore.countryCode',);
+  final _$countryCodeAtom =
+      Atom(name: '_RegisterStore.countryCode', );
 
   @override
   String get countryCode {
@@ -200,8 +248,8 @@ mixin _$RegisterStore on _RegisterStore, Store {
     });
   }
 
-   final _$passwordAtom =
-      Atom(name: '_RegisterStore.password',);
+  final _$passwordAtom =
+      Atom(name: '_RegisterStore.password', );
 
   @override
   String get password {
@@ -216,8 +264,8 @@ mixin _$RegisterStore on _RegisterStore, Store {
     });
   }
 
-   final _$confirmPasswordAtom =
-      Atom(name: '_RegisterStore.confirmPassword',);
+  final _$confirmPasswordAtom =
+      Atom(name: '_RegisterStore.confirmPassword', );
 
   @override
   String get confirmPassword {
@@ -232,8 +280,8 @@ mixin _$RegisterStore on _RegisterStore, Store {
     });
   }
 
-   final _$pictureAtom =
-      Atom(name: '_RegisterStore.picture',);
+  final _$pictureAtom =
+      Atom(name: '_RegisterStore.picture', );
 
   @override
   File get picture {
@@ -248,8 +296,8 @@ mixin _$RegisterStore on _RegisterStore, Store {
     });
   }
 
-   final _$picture2Atom =
-      Atom(name: '_RegisterStore.picture2',);
+  final _$picture2Atom =
+      Atom(name: '_RegisterStore.picture2', );
 
   @override
   File get picture2 {
@@ -264,7 +312,7 @@ mixin _$RegisterStore on _RegisterStore, Store {
     });
   }
 
-   final _$fileAtom = Atom(name: '_RegisterStore.file',);
+  final _$fileAtom = Atom(name: '_RegisterStore.file', );
 
   @override
   File get file {
@@ -279,8 +327,8 @@ mixin _$RegisterStore on _RegisterStore, Store {
     });
   }
 
-   final _$_RegisterStoreActionController =
-      ActionController(name: '_RegisterStore',);
+  final _$_RegisterStoreActionController =
+      ActionController(name: '_RegisterStore', );
 
   @override
   void load(bool load) {
@@ -307,7 +355,7 @@ mixin _$RegisterStore on _RegisterStore, Store {
   @override
   void validateFullName(String value) {
     final _$actionInfo = _$_RegisterStoreActionController.startAction(
-        name: '_RegisterStore.validateFirstName');
+        name: '_RegisterStore.validateFullName');
     try {
       return super.validateFullName(value);
     } finally {
@@ -318,7 +366,7 @@ mixin _$RegisterStore on _RegisterStore, Store {
   @override
   void validateUserName(String value) {
     final _$actionInfo = _$_RegisterStoreActionController.startAction(
-        name: '_RegisterStore.validateLastName');
+        name: '_RegisterStore.validateUserName');
     try {
       return super.validateUserName(value);
     } finally {
@@ -385,10 +433,13 @@ mixin _$RegisterStore on _RegisterStore, Store {
   String toString() {
     return '''
 loading: ${loading},
+isActive: ${isActive},
+isActive2: ${isActive2},
 passwordVisible: ${passwordVisible},
 passwordVisibleTwo: ${passwordVisibleTwo},
 passwordVisibleThree: ${passwordVisibleThree},
 fullName: ${fullName},
+country: ${country},
 username: ${username},
 storeName: ${storeName},
 lastName: ${lastName},
@@ -420,9 +471,16 @@ mixin _$RegisterErrorStore on _RegisterErrorStore, Store {
       (_$hasOtpErrorComputed ??= Computed<bool>(() => super.hasOtpError,
               name: '_RegisterErrorStore.hasOtpError'))
           .value;
+  Computed<bool> _$hasErrorsEmailComputed;
 
-   final _$firstNameAtom =
-      Atom(name: '_RegisterErrorStore.firstName',);
+  @override
+  bool get hasErrorsEmail =>
+      (_$hasErrorsEmailComputed ??= Computed<bool>(() => super.hasErrorsEmail,
+              name: '_RegisterErrorStore.hasErrorsEmail'))
+          .value;
+
+  final _$firstNameAtom =
+      Atom(name: '_RegisterErrorStore.firstName', );
 
   @override
   String get firstName {
@@ -437,8 +495,8 @@ mixin _$RegisterErrorStore on _RegisterErrorStore, Store {
     });
   }
 
-   final _$lastNameAtom =
-      Atom(name: '_RegisterErrorStore.lastName',);
+  final _$lastNameAtom =
+      Atom(name: '_RegisterErrorStore.lastName', );
 
   @override
   String get lastName {
@@ -453,8 +511,8 @@ mixin _$RegisterErrorStore on _RegisterErrorStore, Store {
     });
   }
 
-   final _$usernameAtom =
-      Atom(name: '_RegisterErrorStore.username',);
+  final _$usernameAtom =
+      Atom(name: '_RegisterErrorStore.username', );
 
   @override
   String get username {
@@ -469,8 +527,8 @@ mixin _$RegisterErrorStore on _RegisterErrorStore, Store {
     });
   }
 
-   final _$emailAtom =
-      Atom(name: '_RegisterErrorStore.email',);
+  final _$emailAtom =
+      Atom(name: '_RegisterErrorStore.email', );
 
   @override
   String get email {
@@ -485,8 +543,24 @@ mixin _$RegisterErrorStore on _RegisterErrorStore, Store {
     });
   }
 
-   final _$phoneNumberAtom =
-      Atom(name: '_RegisterErrorStore.phoneNumber',);
+  final _$countryAtom =
+      Atom(name: '_RegisterErrorStore.country', );
+
+  @override
+  String get country {
+    _$countryAtom.reportRead();
+    return super.country;
+  }
+
+  @override
+  set country(String value) {
+    _$countryAtom.reportWrite(value, super.country, () {
+      super.country = value;
+    });
+  }
+
+  final _$phoneNumberAtom =
+      Atom(name: '_RegisterErrorStore.phoneNumber', );
 
   @override
   String get phoneNumber {
@@ -501,8 +575,8 @@ mixin _$RegisterErrorStore on _RegisterErrorStore, Store {
     });
   }
 
-   final _$passwordAtom =
-      Atom(name: '_RegisterErrorStore.password',);
+  final _$passwordAtom =
+      Atom(name: '_RegisterErrorStore.password', );
 
   @override
   String get password {
@@ -517,8 +591,8 @@ mixin _$RegisterErrorStore on _RegisterErrorStore, Store {
     });
   }
 
-   final _$confirmPasswordAtom =
-      Atom(name: '_RegisterErrorStore.confirmPassword',);
+  final _$confirmPasswordAtom =
+      Atom(name: '_RegisterErrorStore.confirmPassword', );
 
   @override
   String get confirmPassword {
@@ -533,8 +607,8 @@ mixin _$RegisterErrorStore on _RegisterErrorStore, Store {
     });
   }
 
-   final _$otpAtom =
-      Atom(name: '_RegisterErrorStore.otp',);
+  final _$otpAtom =
+      Atom(name: '_RegisterErrorStore.otp', );
 
   @override
   String get otp {
@@ -549,6 +623,22 @@ mixin _$RegisterErrorStore on _RegisterErrorStore, Store {
     });
   }
 
+  final _$fullNameAtom =
+      Atom(name: '_RegisterErrorStore.fullName', );
+
+  @override
+  String get fullName {
+    _$fullNameAtom.reportRead();
+    return super.fullName;
+  }
+
+  @override
+  set fullName(String value) {
+    _$fullNameAtom.reportWrite(value, super.fullName, () {
+      super.fullName = value;
+    });
+  }
+
   @override
   String toString() {
     return '''
@@ -556,12 +646,15 @@ firstName: ${firstName},
 lastName: ${lastName},
 username: ${username},
 email: ${email},
+country: ${country},
 phoneNumber: ${phoneNumber},
 password: ${password},
 confirmPassword: ${confirmPassword},
 otp: ${otp},
+fullName: ${fullName},
 hasErrors: ${hasErrors},
-hasOtpError: ${hasOtpError}
+hasOtpError: ${hasOtpError},
+hasErrorsEmail: ${hasErrorsEmail}
     ''';
   }
 }
